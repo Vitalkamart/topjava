@@ -98,7 +98,7 @@ Maven/ Spring/ Security/ JPA(Hibernate)/ REST(Jackson)/ Bootstrap(CSS)/ jQuery +
 - Добавление Spring Security
 - Домашнее задание (HW8 + Optional)
 
-#### 04.01: 9-е занятие
+#### 09.01: 9-е занятие
 - Разбор домашнего задания HW8 + Optional
 - Spring Binding
 - Spring Validation
@@ -110,7 +110,7 @@ Maven/ Spring/ Security/ JPA(Hibernate)/ REST(Jackson)/ Bootstrap(CSS)/ jQuery +
 - Cookie. Session
 - Домашнее задание (HW9 + Optional)
 
-#### 11.01: 10-е занятие
+#### 16.01: 10-е занятие
 - Разбор домашнего задания HW10 + Optional
 - Spring Security Taglib. Method Security Expressions
 - Интерсепторы. Редактирование профиля. JSP tag files
@@ -120,7 +120,7 @@ Maven/ Spring/ Security/ JPA(Hibernate)/ REST(Jackson)/ Bootstrap(CSS)/ jQuery +
 - Защита от межсайтовой подделки запросов (CSRF)
 - Домашнее задание (HW10)
 
-#### 18.01: 11-е занятие
+#### 23.01: 11-е занятие
 - Разбор домашнего задания HW10 + Optional
 - Рефакторинг
 - Фильтруем JSON через @JsonView 
