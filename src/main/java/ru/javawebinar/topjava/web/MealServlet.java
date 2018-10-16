@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -46,13 +47,39 @@ public class MealServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        if (action == null) {
+            action = "getAll";
+        }
+        int id;
         switch (action) {
             case "create":
+                Meal meal = new Meal(LocalDateTime.now(), "", 1000);
+                LOG.info("Created {}", meal);
+                request.setAttribute("meal", meal);
+                request.getRequestDispatcher("/mealForm.jsp").forward(request, response);
+                break;
             case "getAll":
+                LOG.info("getAll");
+                request.setAttribute("meals", MealsUtil.getWithExceeded(repository.getAll(),2000));
+                request.getRequestDispatcher("/meals.jsp").forward(request, response);
+                break;
             case "delete":
-
+                id = getId(request);
+                repository.delete(id);
+                LOG.info("Deleted {}", id);
+                response.sendRedirect("meals");
+                break;
+            case "edit":
+                id = getId(request);
+                request.setAttribute("meal", repository.get(id));
+                LOG.info("Edit {}", id);
+                request.getRequestDispatcher("/mealForm.jsp").forward(request, response);
+                break;
         }
-        request.setAttribute("meals", MealsUtil.getWithExceeded(repository.getAll(), 2000));
-        request.getRequestDispatcher("/meals.jsp").forward(request, response);
+    }
+
+    public int getId(HttpServletRequest request) {
+        String paramId = Objects.requireNonNull(request.getParameter("id"));
+        return Integer.valueOf(paramId);
     }
 }
