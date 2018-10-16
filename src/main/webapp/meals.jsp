@@ -19,8 +19,10 @@
 <body>
     <h3><a href="index.html">Home</a></h3>
     <h2>Meals:</h2>
-
-    <table>
+    <hr>
+    <a href="meals?action=create">Add meal</a>
+    <hr>
+    <table cellpadding="1" cellspacing="1">
         <c:forEach items="${meals}" var="meal">
             <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>
             <tr class="${meal.exceed ? 'exceed' : 'normal'}">
@@ -29,6 +31,8 @@
                 </td>
                 <td>${meal.description}</td>
                 <td>${meal.calories}</td>
+                <td><a href="meals?action=update&id=${meal.id}">Update</a> </td>
+                <td><a href="meals?action=delete&id=${meal.id}">Delete</a> </td>
             </tr>
         </c:forEach>
     </table>
