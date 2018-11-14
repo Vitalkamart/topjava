@@ -94,4 +94,10 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
                 meals.values().stream()
                         .sorted(Comparator.comparing(Meal::getDateTime).reversed());
     }
+
+    @Override
+    public boolean deleteAll(int userId) {
+        Map<Integer, Meal> meals = repository.get(userId);
+        return meals != null && meals.remove(userId) != null;
+    }
 }
